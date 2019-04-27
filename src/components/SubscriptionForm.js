@@ -179,7 +179,8 @@ const SubscriptionFormEl = styled.div`
   @media screen and (max-width: 650px) {
     .form-wrapper {
       form {
-        input[type="text"] {
+        input[type="text"],
+        input[type="email"] {
           width: 100%;
           margin-right: 0;
           margin-bottom: 1rem;
