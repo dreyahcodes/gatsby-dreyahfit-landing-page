@@ -1,5 +1,108 @@
 import React from "react"
 import styled from "styled-components"
+import addToMailchimp from "gatsby-plugin-mailchimp"
+
+const initialSubScribeFormData = {
+  FNAME: "",
+  LNAME: "",
+  email: "",
+  PATHNAME: "/",
+}
+
+const successMsg = `You've been added to the list successfully!`
+const errorMsg =
+  "An error occured. You may already have signed up with that email"
+
+const errorState = {
+  formSuccess: "",
+  formError: errorMsg,
+}
+
+const successState = {
+  formError: "",
+  formSuccess: successMsg,
+  subscribeFormData: initialSubScribeFormData,
+}
+
+class SubscriptionForm extends React.Component {
+  state = {
+    subscribeFormData: initialSubScribeFormData,
+    formError: "",
+    formSuccess: "",
+  }
+
+  onInputChange = (name, value) => {
+    this.setState(({ subscribeFormData }) => ({
+      subscribeFormData: {
+        ...subscribeFormData,
+        [name]: value,
+      },
+    }))
+  }
+
+  subscribeUser = async e => {
+    e.preventDefault()
+    this.setState({
+      formSuccess: "",
+      formError: "",
+    })
+
+    try {
+      console.log(this.state.subscribeFormData)
+      const { email, FNAME, LNAME, PATHNAME } = this.state.subscribeFormData
+
+      if (!email && !FNAME) {
+        return this.setState(errorState)
+      }
+
+      const { result } = await addToMailchimp(email, {
+        FNAME,
+        LNAME,
+        PATHNAME,
+      })
+      console.log("there and back?", result)
+      if (result == "success") {
+        this.setState(successState)
+      } else {
+        this.setState(errorState)
+      }
+    } catch (e) {
+      console.log("error: ", e)
+      console.log("error: ", e.message)
+      this.setState(errorState)
+    }
+  }
+
+  render() {
+    console.log("state: ", this.state)
+    return (
+      <SubscriptionFormEl>
+        <div className="form-wrapper">
+          <form onSubmit={this.subscribeUser}>
+            <input
+              type="text"
+              value={this.state.subscribeFormData.FNAME}
+              onChange={e => this.onInputChange("FNAME", e.target.value)}
+              placeholder="First Name"
+            />
+            <input
+              type="email"
+              value={this.state.subscribeFormData.email}
+              onChange={e => this.onInputChange("email", e.target.value)}
+              placeholder="Email"
+            />
+
+            <button type="submit">Sign Me Up!</button>
+            <div className="small-info-text error">{this.state.formError}</div>
+            <div className="small-info-text success">
+              {this.state.formSuccess}
+            </div>
+          </form>
+        </div>
+      </SubscriptionFormEl>
+    )
+  }
+}
 
 const SubscriptionFormEl = styled.div`
   /* justify-items: center;
@@ -9,7 +112,8 @@ const SubscriptionFormEl = styled.div`
 
     form {
       margin-bottom: 0px;
-      input[type="text"] {
+      input[type="text"],
+      input[type="email"] {
         font-size: 1.3rem;
         width: 49%;
         padding: 12px 20px;
@@ -21,6 +125,19 @@ const SubscriptionFormEl = styled.div`
 
         &:first-child {
           margin-right: 2%;
+        }
+      }
+
+      .small-info-text {
+        font-weight: bold;
+        font-size: 1.2rem;
+
+        &.success {
+          color: #63e463;
+        }
+
+        &.error {
+          color: #f14848;
         }
       }
 
@@ -37,11 +154,12 @@ const SubscriptionFormEl = styled.div`
         border: none;
         cursor: pointer;
         transition: all 0.2s ease-out;
-      }
-      button:hover {
-        background: #fb77adb3;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        color: #eee;
+
+        &:hover {
+          background: #fb77ad;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+          color: #eee;
+        }
       }
     }
   }
@@ -70,26 +188,5 @@ const SubscriptionFormEl = styled.div`
     }
   }
 `
-
-const SubscriptionForm = () => {
-  return (
-    <SubscriptionFormEl>
-      <div className="form-wrapper">
-        <form action="/action_page.php">
-          {/* <span> */}
-          <input
-            type="text"
-            id="fname"
-            name="firstname"
-            placeholder="First Name*"
-          />
-          <input type="text" id="lname" name="lastname" placeholder="Email*" />
-          {/* </span> */}
-          <button type="submit">Sign Me Up!</button>
-        </form>
-      </div>
-    </SubscriptionFormEl>
-  )
-}
 
 export default SubscriptionForm

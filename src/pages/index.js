@@ -99,7 +99,10 @@ const LandingPageEl = styled.div`
 const IndexPage = () => {
   return (
     <LandingPageEl>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO
+        title="Dreyah Fit"
+        keywords={[`fitness`, `women's health`, `lifestyle`]}
+      />
       <div className="text-wrapper">
         <h1 className="main-header">Dreyah Fit</h1>
         <h3 className="subtitle-header">
