@@ -4,6 +4,7 @@ import SEO from "../components/seo"
 import styled from "styled-components"
 import dreyahImg from "../images/dreyah.jpg"
 import SubscriptionForm from "../components/SubscriptionForm"
+import Layout from "../components/layout"
 
 const LandingPageEl = styled.div`
   height: 100vh;
@@ -98,28 +99,30 @@ const LandingPageEl = styled.div`
 
 const IndexPage = () => {
   return (
-    <LandingPageEl>
-      <SEO
-        title="Dreyah Fit"
-        keywords={[`fitness`, `women's health`, `lifestyle`]}
-      />
-      <div className="text-wrapper">
-        <h1 className="main-header">Dreyah Fit</h1>
-        <h3 className="subtitle-header">
-          Empowering women to invest in their wellbeing, while having as much
-          fun as possible.
-        </h3>
-      </div>
+    <Layout>
+      <LandingPageEl>
+        <SEO
+          title="Dreyah Fit"
+          keywords={[`fitness`, `women's health`, `lifestyle`]}
+        />
+        <div className="text-wrapper">
+          <h1 className="main-header">Dreyah Fit</h1>
+          <h3 className="subtitle-header">
+            Empowering women to invest in their wellbeing, while having as much
+            fun as possible.
+          </h3>
+        </div>
 
-      <div className="subscription-wrapper">
-        <h4 className="subscription-text">Re-launching Summer 19'</h4>
-        <p>Fitness and Lifestyle for women</p>
-        <h5>Be the first to know & get exclusive content in your inbox</h5>
+        <div className="subscription-wrapper">
+          <h4 className="subscription-text">Re-launching Summer 19'</h4>
+          <p>Fitness and Lifestyle for women</p>
+          <h5>Be the first to know & get exclusive content in your inbox</h5>
 
-        <SubscriptionForm />
-      </div>
-      <div className="overlay" />
-    </LandingPageEl>
+          <SubscriptionForm />
+        </div>
+        <div className="overlay" />
+      </LandingPageEl>
+    </Layout>
   )
 }
 
