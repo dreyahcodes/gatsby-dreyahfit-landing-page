@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Women's Fitness & Lifestyle`,
+    description: `Fitness and lifestyle for women everywhere. Here you'll find content that helps you become a better and healthier woman while navigating through life, because your journey isn’t about perfection, it’s about moving forward, sometimes backward, and making the most out of every moment in between.`,
+    author: `@dreyahcodes`,
   },
   plugins: [
     {
