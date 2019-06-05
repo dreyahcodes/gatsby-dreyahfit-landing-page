@@ -42,6 +42,13 @@ const LandingPageEl = styled.div`
       text-transform: uppercase;
       color: white;
     }
+    p {
+      margin: 0 0 5px 0;
+      font-size: 1.9rem;
+      /* text-transform: uppercase; */
+      color: white;
+      margin-bottom: 1rem;
+    }
     .subtitle-header {
       margin: 0;
       color: white;
@@ -72,13 +79,6 @@ const LandingPageEl = styled.div`
       margin-bottom: 2rem;
       max-width: 600px;
     }
-    p {
-      margin: 0 0 5px 0;
-      font-size: 1.9rem;
-      text-transform: uppercase;
-      color: white;
-      margin-bottom: 1rem;
-    }
   }
 
   @media screen and (max-width: 850px) {
@@ -107,6 +107,7 @@ const IndexPage = () => {
         />
         <div className="text-wrapper">
           <h1 className="main-header">EVERY FIT GIRL</h1>
+          <p>(formerly Dreyah Fit)</p>
           <h3 className="subtitle-header">
             Empowering women to invest in their wellbeing, while having as much
             fun as possible.
