@@ -22,7 +22,7 @@ const LandingPageEl = styled.div`
     content: " ";
     height: 100%;
     width: 100%;
-    background-color: rgba(101, 82, 255, 0.58);
+    background-color: #eba599e8;
     z-index: 0;
     position: fixed;
     top: 0;
@@ -59,7 +59,7 @@ const LandingPageEl = styled.div`
       margin: 0;
       font-size: 2.8rem;
       color: white;
-      margin-bottom: 7px;
+      margin-bottom: 11px;
       font-weight: 500;
       font-family: "Libre Baskerville";
       font-style: italic;
@@ -91,7 +91,7 @@ const LandingPageEl = styled.div`
       .main-header {
         margin-top: 6rem;
         line-height: 1;
-        font-size: 8rem;
+        font-size: 6rem;
       }
     }
   }
@@ -102,11 +102,11 @@ const IndexPage = () => {
     <Layout>
       <LandingPageEl>
         <SEO
-          title="Dreyah Fit"
+          title="Every Fit Girl"
           keywords={[`fitness`, `women's health`, `lifestyle`]}
         />
         <div className="text-wrapper">
-          <h1 className="main-header">Dreyah Fit</h1>
+          <h1 className="main-header">EVERY FIT GIRL</h1>
           <h3 className="subtitle-header">
             Empowering women to invest in their wellbeing, while having as much
             fun as possible.
@@ -114,8 +114,8 @@ const IndexPage = () => {
         </div>
 
         <div className="subscription-wrapper">
-          <h4 className="subscription-text">Re-launching Summer 19'</h4>
-          <p>Fitness and Lifestyle for women</p>
+          <h4 className="subscription-text">Launching June 2019'</h4>
+          {/* <p>Fitness and Lifestyle for women</p> */}
           <h5>Be the first to know & get exclusive content in your inbox</h5>
 
           <SubscriptionForm />
